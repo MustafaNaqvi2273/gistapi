@@ -1,13 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import Octicon from 'react-octicon'
+import Octicon from 'react-octicon';
+import { setSearchValue } from '../store/slices/gistSlice';
+import { useDispatch } from 'react-redux';
 
 const Search = () => {
+  const dispatch = useDispatch();
+
   return (
     <Wrapper>
       <InputBox>
       <Octicon name="search" />
-      <Input placeholder="Search Gists for the username"/>
+      <Input placeholder="Search Gists for the username" onChange={(e) => dispatch(setSearchValue(e.target.value))} />
       </InputBox>
     </Wrapper>
   )
